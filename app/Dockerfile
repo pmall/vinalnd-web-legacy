@@ -1,13 +1,13 @@
 # Stage 1 - install php dependencies
-FROM composer:2.0 as build-deps
+FROM composer:2.10.3 as build-deps
 WORKDIR /var/www/html
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --no-scripts --no-interaction --prefer-dist --optimize-autoloader --ignore-platform-req=php
+RUN composer install --no-dev --no-scripts --no-interaction --prefer-dist --optimize-autoloader
 COPY . ./
 RUN composer dump-autoload --no-dev --optimize --classmap-authoritative
 
 # Stage 2 - copy the artifacts and start php-fpm
-FROM php:8.1-fpm
+FROM php:8.3.36-fpm
 RUN apt-get update && \
     apt-get install -y libpq-dev && \
     rm -rf /var/lib/apt/lists/* && \

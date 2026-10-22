@@ -9,10 +9,13 @@
         }
     ],
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "8.3.36"
+        }
     },
     "require": {
-        "guzzlehttp/psr7": "^1.6",
+        "guzzlehttp/psr7": "^2.13",
         "http-interop/http-factory-guzzle": "^1.0",
         "http-interop/response-sender": "^1.0",
         "middlewares/payload": "^3.0",
